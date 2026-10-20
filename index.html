@@ -3,80 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ระบบติดตามตัวชี้วัด กพร. ประจำปีงบประมาณ พ.ศ. 2570 | OPDC KPI Command Center</title>
-  <!-- Google Fonts: Prompt (Thai), Orbitron (Futuristic Numbers), JetBrains Mono -->
+  <title>ระบบติดตามตัวชี้วัด กพร. ประจำปีงบประมาณ พ.ศ. 2570 | กองประเมินผลกระทบต่อสุขภาพ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Orbitron:wght@600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Futuristic Ambient Background -->
+  <!-- แบ็คกราวด์สีน้ำเงินอ่อน สบายตา -->
   <div class="ambient-bg"></div>
   <div class="cyber-grid"></div>
 
   <div class="app-wrapper">
-    <!-- Top Navigation Header -->
+    <!-- แถบเมนูด้านบน -->
     <header class="top-navbar">
       <div class="brand-section">
-        <div class="brand-orb">2570</div>
+        <!-- 6. Logo เปลี่ยนเป็น KPI 70 -->
+        <div class="brand-orb">KPI 70</div>
         <div class="brand-titles">
           <h1>ระบบติดตามตัวชี้วัด กพร. ประจำปีงบประมาณ พ.ศ. 2570</h1>
+          <!-- 5. เอา (-) ออกทั้งหมด และ 7. เน้นภาษาไทย -->
           <div class="brand-subtitle">
-            <span>OPDC Performance Intelligence &amp; Executive Command Center</span>
+            <span>กองประเมินผลกระทบต่อสุขภาพ กรมอนามัย</span>
             <span id="syncStatusBadge" class="sync-badge">
               <span class="status-dot"></span>
-              <span id="syncStatusText">กำลังเชื่อมต่อ Google Sheet...</span>
+              <span id="syncStatusText">พร้อมใช้งาน</span>
             </span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">อัปเดตล่าสุด: <strong id="lastSyncTime">-</strong></span>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">เวลาปัจจุบัน: <strong id="lastSyncTime"></strong></span>
           </div>
         </div>
       </div>
 
-      <!-- 2-Page Switcher -->
-      <nav class="nav-tabs" aria-label="สลับหน้าผู้บริหารและเจ้าหน้าที่">
+      <!-- สลับหน้า 3 หน้า -->
+      <nav class="nav-tabs" aria-label="แถบสลับหน้า">
         <button id="tab-btn-executive" class="nav-tab-btn active" onclick="switchPage('executive')">
           <span>📊</span>
-          <span>หน้า 1: สำหรับผู้บริหาร (Projector View)</span>
+          <span>หน้า 1: สำหรับผู้บริหาร</span>
         </button>
         <button id="tab-btn-staff" class="nav-tab-btn" onclick="switchPage('staff')">
           <span>🛠️</span>
-          <span>หน้า 2: สำหรับเจ้าหน้าที่ (บันทึก/อัปโหลด/แก้ไข)</span>
+          <span>หน้า 2: สำหรับเจ้าหน้าที่</span>
+        </button>
+        <!-- 2. เพิ่มหน้าที่ 3 สำหรับ Checklist -->
+        <button id="tab-btn-checklist" class="nav-tab-btn" onclick="switchPage('checklist')">
+          <span>📋</span>
+          <span>หน้า 3: เจ้าหน้าที่บริหารยุทธศาสตร์</span>
         </button>
       </nav>
 
-      <!-- Quick Controls for Projector & Google Sheet -->
+      <!-- 4. ปุ่มแรกเปลี่ยนเป็น "🖥️ เต็มจอ" และเอานำเสนออัตโนมัติออก -->
       <div class="nav-actions">
-        <button id="autoSlideBtn" class="btn" onclick="toggleAutoPresentation()" title="สลับมิติตัวชี้วัดอัตโนมัติขณะนำเสนอ">
-          ▶️ นำเสนออัตโนมัติ
+        <button class="btn btn-primary" onclick="toggleFullscreen()" title="แสดงผลเต็มจอสำหรับขึ้นโปรเจคเตอร์">
+          🖥️ เต็มจอ
         </button>
-        <button id="themeToggleBtn" class="btn" onclick="toggleThemeMode()" title="สลับโหมดสีเขียวอ่อนสบายตา หรือ เขียวเข้มป่าธรรมชาติ">
-          🌲 โหมดเขียวเข้ม (Forest Dark)
-        </button>
-        <button class="btn btn-primary" onclick="toggleProjectorMode()" title="ขยายตัวอักษรและเปิดเต็มจอสำหรับโปรเจคเตอร์">
-          📽️ โหมดขึ้นโปรเจคเตอร์
-        </button>
-        <a href="https://docs.google.com/spreadsheets/d/1Lro8WK25uexe97cFHHedqC5iu2B65VyfiQ2AWUXyIUw/edit?usp=sharing" target="_blank" rel="noopener" class="btn" title="เปิดไฟล์ Google Sheet ต้นฉบับ">
-          📗 เปิด Google Sheet
+        <a href="https://docs.google.com/spreadsheets/d/1Lro8WK25uexe97cFHHedqC5iu2B65VyfiQ2AWUXyIUw/edit?usp=sharing" target="_blank" rel="noopener" class="btn" title="เปิดไฟล์ข้อมูล">
+          📗 เปิดไฟล์ข้อมูล
         </a>
-        <button class="btn" onclick="openSyncModal()" title="ตั้งค่าการเขียนข้อมูลกลับไปยัง Google Sheet อัตโนมัติ">
-          ⚙️ ตั้งค่าซิงค์ Sheet
-        </button>
       </div>
     </header>
 
     <!-- =========================================================
-         PAGE 1: หน้าแรก สำหรับผู้บริหาร (EXECUTIVE PROJECTOR VIEW)
+         หน้า 1: สำหรับผู้บริหาร
          ========================================================= -->
     <main id="page-executive" class="page-view active">
-      <!-- Top Executive Big Metrics -->
+      <!-- 8. เริ่มต้นยังไม่มีค่า (0) -->
       <section class="exec-hero-grid">
-        <!-- Card 1: Overall % Achievement -->
-        <div class="hero-card featured" style="--card-accent: var(--accent-cyan);">
+        <div class="hero-card featured">
           <div>
             <div class="hero-card-header">
-              <span class="hero-label">ความสำเร็จรวมเฉลี่ยถ่วงน้ำหนัก (ปี 2570)</span>
-              <div class="hero-icon">🌿</div>
+              <span class="hero-label">ความสำเร็จเฉลี่ยรวม (ปี 2570)</span>
+              <div class="hero-icon">🎯</div>
             </div>
             <div class="hero-value-row">
               <span id="heroOverallPercent" class="hero-big-number">0.0</span>
@@ -85,7 +81,7 @@
           </div>
           <div>
             <div class="hero-subtext">
-              <span>เทียบเป้าหมายรวมทุกมิติ กพร.</span>
+              <span>เทียบเป้าหมายปีงบประมาณ 2570</span>
               <span>น้ำหนักรวม <strong id="heroTotalWeight">100</strong>%</span>
             </div>
             <div class="cyber-progress-track">
@@ -94,24 +90,22 @@
           </div>
         </div>
 
-        <!-- Card 2: Overall OPDC Score (Out of 5.00) -->
-        <div class="hero-card" style="--card-accent: var(--accent-emerald);">
+        <div class="hero-card">
           <div class="hero-card-header">
             <span class="hero-label">คะแนนประเมิน กพร. เฉลี่ย</span>
             <div class="hero-icon">⭐</div>
           </div>
           <div class="hero-value-row">
-            <span id="heroOverallScore" class="hero-big-number" style="color: var(--accent-emerald);">0.00</span>
+            <span id="heroOverallScore" class="hero-big-number" style="color: var(--accent-blue);">0.00</span>
             <span class="hero-unit">/ 5.00</span>
           </div>
           <div class="hero-subtext">
-            <span>เกณฑ์มาตรฐาน กพร. 5 ระดับ</span>
-            <span style="color: var(--accent-emerald); font-weight: 600;">คำนวณถ่วงน้ำหนัก</span>
+            <span>เกณฑ์มาตรฐาน 5 ระดับ</span>
+            <span style="color: var(--accent-blue); font-weight: 600;">คำนวณถ่วงน้ำหนัก</span>
           </div>
         </div>
 
-        <!-- Card 3: Achieved KPIs -->
-        <div class="hero-card" style="--card-accent: #16a34a;">
+        <div class="hero-card">
           <div class="hero-card-header">
             <span class="hero-label">บรรลุเป้าหมายแล้ว</span>
             <div class="hero-icon">✅</div>
@@ -121,63 +115,60 @@
             <span class="hero-unit">ตัวชี้วัด</span>
           </div>
           <div class="hero-subtext">
-            <span>จากทั้งหมด <strong id="heroTotalCount">0</strong> ตัวชี้วัด</span>
-            <span style="color: var(--accent-emerald); font-weight: 600;">ระดับ 4.5 - 5.0</span>
+            <span>จากทั้งหมด <strong id="heroTotalCount">2</strong> ตัวชี้วัด</span>
+            <span style="color: var(--accent-emerald); font-weight: 600;">ระดับ 5</span>
           </div>
         </div>
 
-        <!-- Card 4: On Track KPIs -->
-        <div class="hero-card" style="--card-accent: var(--accent-blue);">
+        <div class="hero-card">
           <div class="hero-card-header">
-            <span class="hero-label">กำลังดำเนินการตามแผน</span>
-            <div class="hero-icon">🌱</div>
+            <span class="hero-label">กำลังดำเนินการ</span>
+            <div class="hero-icon">🚀</div>
           </div>
           <div class="hero-value-row">
             <span id="heroOnTrackCount" class="hero-big-number" style="color: var(--accent-blue);">0</span>
             <span class="hero-unit">ตัวชี้วัด</span>
           </div>
           <div class="hero-subtext">
-            <span>ความก้าวหน้า 80% - 99%</span>
-            <span>On Track</span>
+            <span>อยู่ระหว่างดำเนินงาน</span>
+            <span>ตามแผน</span>
           </div>
         </div>
 
-        <!-- Card 5: Warning / Accelerated -->
-        <div class="hero-card" style="--card-accent: var(--accent-amber);">
+        <div class="hero-card">
           <div class="hero-card-header">
-            <span class="hero-label">เฝ้าระวัง / ต้องเร่งรัด</span>
-            <div class="hero-icon">⚡</div>
+            <span class="hero-label">รอผลการดำเนินงาน</span>
+            <div class="hero-icon">⏳</div>
           </div>
           <div class="hero-value-row">
-            <span id="heroWarningCount" class="hero-big-number" style="color: var(--accent-amber);">0</span>
+            <span id="heroWarningCount" class="hero-big-number" style="color: var(--text-muted);">2</span>
             <span class="hero-unit">ตัวชี้วัด</span>
           </div>
           <div class="hero-subtext">
-            <span>ต่ำกว่า 80% ของเป้าหมาย</span>
-            <span style="color: var(--accent-amber);">เร่งรัดติดตาม</span>
+            <span>ช่วงต้นปีงบประมาณ 2570</span>
+            <span style="color: var(--text-muted);">รอรายงาน</span>
           </div>
         </div>
       </section>
 
-      <!-- Executive Analytics Row: Radial Gauge + Dimension Breakdown + Status Distribution -->
+      <!-- แถบสรุปผลสัมฤทธิ์ -->
       <section class="exec-analytics-grid">
-        <!-- Left: Futuristic Radial Gauge -->
         <div class="glass-panel">
           <div class="panel-header">
             <div class="panel-title">
-              <span>🌿</span>
-              <span>ดัชนีผลสัมฤทธิ์ภาพรวม (Overall Index)</span>
+              <span>🌐</span>
+              <span>ดัชนีผลสัมฤทธิ์ภาพรวม</span>
             </div>
-            <span class="panel-title-badge">LIVE 2570</span>
+            <span class="panel-title-badge">ปี 2570</span>
           </div>
           <div class="gauge-container">
             <div class="radial-gauge">
               <svg viewBox="0 0 220 220">
                 <defs>
                   <linearGradient id="cyberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#22c55e" />
-                    <stop offset="50%" stop-color="#16a34a" />
-                    <stop offset="100%" stop-color="#0d9488" />
+                    <stop offset="0%" stop-color="#38bdf8" />
+                    <stop offset="50%" stop-color="#2563eb" />
+                    <stop offset="100%" stop-color="#1d4ed8" />
                   </linearGradient>
                 </defs>
                 <circle class="radial-gauge-bg" cx="110" cy="110" r="90"></circle>
@@ -185,7 +176,7 @@
               </svg>
               <div class="radial-center-text">
                 <div id="gaugeCenterPercent" class="radial-percent">0.0%</div>
-                <div class="radial-caption">ผลสัมฤทธิ์รวม</div>
+                <div class="radial-caption">ผลงานเฉลี่ยรวม</div>
               </div>
             </div>
             <div class="score-pill-row">
@@ -201,110 +192,79 @@
           </div>
         </div>
 
-        <!-- Center: Performance by OPDC Dimension -->
         <div class="glass-panel">
           <div class="panel-header">
             <div class="panel-title">
               <span>🏛️</span>
-              <span>ผลสัมฤทธิ์แยกตามมิติการประเมิน กพร.</span>
+              <span>ตัวชี้วัดตามคำรับรองการปฏิบัติราชการ</span>
             </div>
-            <span class="panel-title-badge">% ความสำเร็จ &amp; คะแนนเฉลี่ย</span>
+            <span class="panel-title-badge">2 ตัวชี้วัดหลัก</span>
           </div>
-          <div id="dimensionBreakdownList" class="dimension-list"></div>
+          <div class="dimension-list">
+            <div class="dimension-item">
+              <div class="dimension-top">
+                <span class="dimension-name">ตัวชี้วัดที่ 3.26: ความพร้อมรับมือมลพิษทางอากาศ (น้ำหนัก 50%)</span>
+                <span style="font-family:var(--font-mono); font-weight:700; color:var(--text-muted);">รอผลงาน</span>
+              </div>
+              <div class="cyber-progress-track">
+                <div class="cyber-progress-fill" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="dimension-item">
+              <div class="dimension-top">
+                <span class="dimension-name">ตัวชี้วัดที่ 3.27: อปท. พัฒนาเป็นเมืองสุขภาพดี (น้ำหนัก 50%)</span>
+                <span style="font-family:var(--font-mono); font-weight:700; color:var(--text-muted);">รอผลงาน</span>
+              </div>
+              <div class="cyber-progress-track">
+                <div class="cyber-progress-fill" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Right: Status Breakdown -->
         <div class="glass-panel">
           <div class="panel-header">
             <div class="panel-title">
               <span>📡</span>
-              <span>สัดส่วนสถานะตัวชี้วัด</span>
+              <span>สถานะตัวชี้วัด</span>
             </div>
-            <button class="btn btn-sm" onclick="forceSyncNow()">🔄 รีเฟรชข้อมูล</button>
           </div>
           <div id="statusDistributionPanel"></div>
         </div>
       </section>
 
-      <!-- Filter & Search Bar for Projector KPI Cards -->
-      <section class="filter-toolbar">
-        <div id="categoryPillsContainer" class="category-pills"></div>
-        <div class="search-box">
+      <!-- ค้นหาตัวชี้วัด -->
+      <section style="display:flex; justify-content:flex-end; margin-bottom:1.25rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem; background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:12px; padding:0.5rem 0.95rem; min-width:300px;">
           <span>🔍</span>
-          <input id="execSearchInput" type="text" placeholder="ค้นหารหัส, ชื่อตัวชี้วัด, หน่วยงานผู้รับผิดชอบ..." />
+          <input id="execSearchInput" type="text" placeholder="ค้นหาตัวชี้วัดหรือผู้รับผิดชอบ..." style="border:none; outline:none; background:transparent; font-family:var(--font-sans); font-size:0.95rem; width:100%; color:var(--text-primary);" />
         </div>
       </section>
 
-      <!-- Individual KPI Projector Cards -->
+      <!-- การ์ดตัวชี้วัดทั้ง 2 ตัว -->
       <section id="executiveKpiGrid" class="kpi-cards-grid"></section>
     </main>
 
     <!-- =========================================================
-         PAGE 2: หน้าสอง สำหรับเจ้าหน้าที่ (STAFF MANAGEMENT PORTAL)
+         หน้า 2: สำหรับเจ้าหน้าที่ (บันทึกข้อมูล/อัปโหลด/แก้ไข)
          ========================================================= -->
     <section id="page-staff" class="page-view">
       <div class="staff-header-banner">
         <div class="staff-banner-info">
-          <h2>🛠️ ระบบจัดการและบันทึกข้อมูลตัวชี้วัด กพร. ปี 2570 (สำหรับเจ้าหน้าที่)</h2>
-          <p>สามารถพิมพ์แก้ไขตัวเลขผลงานจริงในตารางได้ทันที เพิ่ม/แก้ไข/ลบ ตัวชี้วัด หรืออัปโหลดไฟล์ CSV และเอกสารหลักฐานเชื่อมโยง Google Sheet</p>
-        </div>
-        <div class="staff-action-group">
-          <button class="btn btn-emerald" onclick="openKpiModal(null)">
-            ➕ เพิ่มตัวชี้วัดใหม่
-          </button>
-          <button class="btn btn-primary" onclick="forceSyncNow()">
-            ☁️ ซิงค์ข้อมูลกับ Google Sheet
-          </button>
-          <button class="btn" onclick="exportToCsv()">
-            📥 ส่งออกไฟล์ CSV / Excel
-          </button>
+          <h2>🛠️ บันทึกตัวเลขผลงานจริงและจัดการเอกสารหลักฐาน (สำหรับเจ้าหน้าที่)</h2>
+          <p>สามารถพิมพ์ตัวเลขผลงานจริงลงในช่องตารางได้ทันที หรือกดแก้ไขเพื่อเลือกแนบเอกสารหรือระบุลิงก์</p>
         </div>
       </div>
 
-      <!-- Upload & Quick Sync Zone -->
-      <div class="upload-grid">
-        <!-- Box 1: Bulk CSV Upload -->
-        <div id="csvDropzone" class="dropzone-box" onclick="document.getElementById('csvFileInput').click()">
-          <div class="dropzone-icon">📂</div>
-          <h3 style="margin-bottom: 0.35rem;">อัปโหลดข้อมูลตารางตัวชี้วัด (ไฟล์ CSV / Excel CSV)</h3>
-          <p style="font-size: 0.88rem; color: var(--text-secondary);">
-            คลิกเพื่อเลือกไฟล์ หรือลากไฟล์ <code>.csv</code> มาวางที่นี่เพื่อนำเข้า/อัปเดตตัวเลขทั้งหมดในครั้งเดียว
-          </p>
-          <input id="csvFileInput" type="file" accept=".csv" style="display: none;" onchange="handleCsvFileUpload(event)" />
-        </div>
-
-        <!-- Box 2: Direct Google Sheet Info -->
-        <div class="glass-panel" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-              <h3 style="font-size: 1.08rem;">🔗 ฐานข้อมูล Google Sheets ที่เชื่อมต่อ</h3>
-              <span class="kpi-code-badge">ID: 1Lro8WK...xIUw</span>
-            </div>
-            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
-              ข้อมูลทั้งหมดเชื่อมโยงกับ Google Sheet ของหน่วยงาน สามารถแก้ไขผ่านหน้าเว็บนี้ หรือส่งออก CSV ไปวางใน Sheet ได้โดยตรง
-            </p>
-          </div>
-          <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
-            <a href="https://docs.google.com/spreadsheets/d/1Lro8WK25uexe97cFHHedqC5iu2B65VyfiQ2AWUXyIUw/edit?usp=sharing" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-              📗 เปิด Google Sheet ในแท็บใหม่
-            </a>
-            <button class="btn btn-sm" onclick="openSyncModal()">
-              ⚡ ตั้งค่าเขียนข้อมูลอัตโนมัติ (Apps Script)
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Staff Interactive CRUD Table -->
       <div class="glass-panel">
         <div class="panel-header">
           <div class="panel-title">
             <span>📋</span>
-            <span>ตารางจัดการข้อมูลตัวชี้วัดและบันทึกผลงานจริง</span>
+            <span>ตารางบันทึกผลงานตัวชี้วัด</span>
           </div>
-          <div class="search-box">
+          <div style="display:flex; align-items:center; gap:0.5rem; background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:12px; padding:0.45rem 0.85rem; min-width:280px;">
             <span>🔍</span>
-            <input id="staffSearchInput" type="text" placeholder="ค้นหาตัวชี้วัดในตาราง..." />
+            <input id="staffSearchInput" type="text" placeholder="ค้นหาตัวชี้วัดในตาราง..." style="border:none; outline:none; background:transparent; font-family:var(--font-sans); font-size:0.92rem; width:100%; color:var(--text-primary);" />
           </div>
         </div>
 
@@ -312,241 +272,180 @@
           <table class="cyber-table">
             <thead>
               <tr>
-                <th style="width: 95px;">รหัส</th>
-                <th>ชื่อตัวชี้วัด กพร. / มิติ / ผู้รับผิดชอบ</th>
+                <th style="width: 120px;">รหัส</th>
+                <th>ชื่อตัวชี้วัด / ผู้รับผิดชอบ</th>
                 <th style="text-align: center; width: 90px;">น้ำหนัก</th>
                 <th style="text-align: right; width: 130px;">เป้าหมาย</th>
-                <th style="text-align: right; width: 140px;">ผลงานจริง (พิมพ์แก้ได้)</th>
-                <th style="text-align: center; width: 120px;">% / คะแนน</th>
+                <th style="text-align: right; width: 150px;">ผลงานจริง (พิมพ์ได้)</th>
+                <th style="text-align: center; width: 120px;">ความสำเร็จ</th>
                 <th style="width: 140px;">สถานะ</th>
-                <th style="width: 170px;">ไฟล์หลักฐานแนบ</th>
-                <th style="width: 165px;">จัดการ (แก้ไข/ลบ)</th>
+                <th style="width: 200px;">เอกสารหลักฐาน / จัดการ</th>
               </tr>
             </thead>
             <tbody id="staffTableBody"></tbody>
           </table>
         </div>
       </div>
+    </section>
 
-      <!-- Hidden input for row-level evidence file upload -->
-      <input id="hiddenEvidenceFileInput" type="file" style="display: none;" onchange="handleEvidenceFileSelected(event)" />
+    <!-- =========================================================
+         2. หน้า 3: เจ้าหน้าที่บริหารยุทธศาสตร์ (Checklist การนำเข้าข้อมูล)
+         ========================================================= -->
+    <section id="page-checklist" class="page-view">
+      <div class="staff-header-banner">
+        <div class="staff-banner-info">
+          <h2>📋 รายการตรวจสอบการอัปโหลดข้อมูล (Checklist สำหรับเจ้าหน้าที่บริหารยุทธศาสตร์)</h2>
+          <p>ตรวจสอบและบันทึกวันที่อัปโหลดเอกสารลงเว็บไซต์หน่วยงาน และระบบ DOC 4.0 พร้อมกำหนดส่งตามระยะเวลาที่กำหนด</p>
+        </div>
+      </div>
+
+      <!-- สรุปตัวเลข Checklist -->
+      <div class="checklist-summary-grid">
+        <div class="checklist-card">
+          <div class="checklist-card-icon">📑</div>
+          <div class="checklist-card-info">
+            <h4>รายการรายงานทั้งหมด</h4>
+            <div id="chkTotalCount" class="count-num">10</div>
+          </div>
+        </div>
+        <div class="checklist-card">
+          <div class="checklist-card-icon">🌐</div>
+          <div class="checklist-card-info">
+            <h4>อัปโหลดลงเว็บหน่วยงานแล้ว</h4>
+            <div id="chkWebCount" class="count-num" style="color:var(--accent-blue);">0 / 10</div>
+          </div>
+        </div>
+        <div class="checklist-card">
+          <div class="checklist-card-icon">💻</div>
+          <div class="checklist-card-info">
+            <h4>อัปโหลดลงระบบ DOC แล้ว</h4>
+            <div id="chkDocCount" class="count-num" style="color:var(--accent-emerald);">0 / 10</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ตาราง Checklist -->
+      <div class="glass-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>✅</span>
+            <span>รายการตรวจสอบการนำเข้าข้อมูลตามรอบการประเมิน</span>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <button id="pillChkAll" class="btn btn-sm checklist-pill active" onclick="filterChecklist('ALL')">ทั้งหมด</button>
+            <button id="pillChk326" class="btn btn-sm checklist-pill" onclick="filterChecklist('3.26')">ตัวชี้วัด 3.26</button>
+            <button id="pillChk327" class="btn btn-sm checklist-pill" onclick="filterChecklist('3.27')">ตัวชี้วัด 3.27</button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="cyber-table">
+            <thead>
+              <tr>
+                <th style="width: 130px;">ตัวชี้วัด</th>
+                <th>รายการแบบฟอร์ม / รอบการประเมิน</th>
+                <th style="width: 140px;">กำหนดส่ง</th>
+                <th style="width: 220px;">อัปโหลดลงเว็บหน่วยงาน</th>
+                <th style="width: 220px;">อัปโหลดลงระบบ DOC 4.0</th>
+                <th>หมายเหตุ</th>
+              </tr>
+            </thead>
+            <tbody id="checklistTableBody"></tbody>
+          </table>
+        </div>
+      </div>
     </section>
   </div>
 
   <!-- =========================================================
-       MODAL 1: เพิ่ม / แก้ไขข้อมูลตัวชี้วัด (CRUD FORM)
+       9. โมดัลแก้ไขตัวชี้วัด (เลือกได้ระหว่างอัปโหลดไฟล์ หรือ แนบลิงก์)
        ========================================================= -->
   <div id="kpiFormModal" class="modal-backdrop">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 id="kpiModalTitle" class="modal-title">เพิ่ม/แก้ไขตัวชี้วัด</h3>
+        <h3 id="kpiModalTitle" class="modal-title">แก้ไขตัวชี้วัด</h3>
         <button class="btn btn-sm" onclick="closeKpiModal()">✕ ปิด</button>
       </div>
       <form id="kpiDataForm" onsubmit="handleSaveKpiForm(event)">
         <input type="hidden" id="f_id" />
         <div class="form-grid">
           <div class="form-group">
-            <label for="f_code">รหัสตัวชี้วัด *</label>
-            <input id="f_code" type="text" class="form-control" required placeholder="เช่น กพร.1.1" />
+            <label for="f_code">รหัสตัวชี้วัด</label>
+            <input id="f_code" type="text" class="form-control" readonly />
           </div>
           <div class="form-group">
-            <label for="f_dimension">มิติการประเมิน กพร. *</label>
-            <input id="f_dimension" type="text" class="form-control" list="dimensionOptions" required />
-            <datalist id="dimensionOptions">
-              <option value="มิติที่ 1 ประสิทธิผลตามพันธกิจ"></option>
-              <option value="มิติที่ 2 คุณภาพการให้บริการ"></option>
-              <option value="มิติที่ 3 ประสิทธิภาพของการปฏิบัติราชการ"></option>
-              <option value="มิติที่ 4 การพัฒนาองค์กร"></option>
-            </datalist>
-          </div>
-
-          <div class="form-group full-width">
-            <label for="f_name">ชื่อตัวชี้วัด กพร. (ปีงบประมาณ พ.ศ. 2570) *</label>
-            <input id="f_name" type="text" class="form-control" required placeholder="ระบุชื่อตัวชี้วัด..." />
-          </div>
-
-          <div class="form-group">
-            <label for="f_unit">หน่วยนับ *</label>
-            <input id="f_unit" type="text" class="form-control" required placeholder="เช่น ร้อยละ (%), วันทำการ, เรื่อง" />
-          </div>
-          <div class="form-group">
-            <label for="f_weight">น้ำหนักตัวชี้วัด (%) *</label>
+            <label for="f_weight">น้ำหนักตัวชี้วัด (%)</label>
             <input id="f_weight" type="number" step="any" class="form-control" required />
           </div>
 
+          <div class="form-group full-width">
+            <label for="f_name">ชื่อตัวชี้วัด</label>
+            <input id="f_name" type="text" class="form-control" required />
+          </div>
+
           <div class="form-group">
-            <label for="f_target">ค่าเป้าหมายปี 2570 (Target) *</label>
+            <label for="f_target">ค่าเป้าหมายปี 2570</label>
             <input id="f_target" type="number" step="any" class="form-control" required />
           </div>
           <div class="form-group">
-            <label for="f_actual">ผลงานจริงปัจจุบัน (Actual) *</label>
-            <input id="f_actual" type="number" step="any" class="form-control" required />
-          </div>
-
-          <div class="form-group">
-            <label for="f_polarity">ทิศทางการประเมินผล</label>
-            <select id="f_polarity" class="form-control">
-              <option value="higher">ค่ามากยิ่งดี (เช่น ร้อยละความสำเร็จ)</option>
-              <option value="lower">ค่าน้อยยิ่งดี (เช่น จำนวนวันทำการเฉลี่ย)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="f_owner">กลุ่มงาน / ผู้รับผิดชอบ</label>
-            <input id="f_owner" type="text" class="form-control" placeholder="ระบุกลุ่มงานหรือผู้รับผิดชอบ" />
+            <label for="f_actual">ผลงานจริงปัจจุบัน</label>
+            <input id="f_actual" type="number" step="any" class="form-control" placeholder="0" />
           </div>
 
           <div class="form-group full-width">
-            <label>เกณฑ์การให้คะแนน กพร. 5 ระดับ (ระดับ 1 ถึง ระดับ 5)</label>
-            <div class="form-grid-5">
-              <div>
-                <small style="color:var(--text-muted)">ระดับ 1</small>
-                <input id="f_level1" type="number" step="any" class="form-control" required />
+            <label for="f_owner">ผู้รับผิดชอบ / ผู้รายงาน</label>
+            <input id="f_owner" type="text" class="form-control" />
+          </div>
+
+          <!-- 9. ตัวเลือกเอกสารหลักฐาน: เลือกระหว่างอัปโหลดไฟล์ หรือ แนบลิงก์ -->
+          <div class="form-group full-width" style="margin-top:0.5rem;">
+            <label>รูปแบบเอกสารหลักฐาน</label>
+            <div class="evidence-type-toggle">
+              <button type="button" id="evidenceToggleLink" class="evidence-toggle-btn active" onclick="switchEvidenceType('link')">
+                🔗 แนบลิงก์ (URL)
+              </button>
+              <button type="button" id="evidenceToggleFile" class="evidence-toggle-btn" onclick="switchEvidenceType('file')">
+                📁 อัปโหลดไฟล์เอกสาร
+              </button>
+            </div>
+
+            <!-- ส่วนแนบลิงก์ -->
+            <div id="evidenceLinkSection">
+              <div class="form-group">
+                <label for="f_evidenceUrl">ระบุลิงก์เอกสาร (Google Drive, เว็บไซต์หน่วยงาน, DOC 4.0)</label>
+                <input id="f_evidenceUrl" type="url" class="form-control" placeholder="https://..." />
               </div>
-              <div>
-                <small style="color:var(--text-muted)">ระดับ 2</small>
-                <input id="f_level2" type="number" step="any" class="form-control" required />
+            </div>
+
+            <!-- ส่วนอัปโหลดไฟล์ -->
+            <div id="evidenceFileSection" style="display:none;">
+              <div class="form-group">
+                <label>เลือกไฟล์จากเครื่อง (PDF, Word, Excel, รูปภาพ)</label>
+                <input type="file" id="modalFileInput" class="form-control" onchange="handleModalFileUpload(event)" />
               </div>
-              <div>
-                <small style="color:var(--text-muted)">ระดับ 3</small>
-                <input id="f_level3" type="number" step="any" class="form-control" required />
-              </div>
-              <div>
-                <small style="color:var(--text-muted)">ระดับ 4</small>
-                <input id="f_level4" type="number" step="any" class="form-control" required />
-              </div>
-              <div>
-                <small style="color:var(--text-muted)">ระดับ 5</small>
-                <input id="f_level5" type="number" step="any" class="form-control" required />
-              </div>
+            </div>
+
+            <div class="form-group" style="margin-top:0.5rem;">
+              <label for="f_evidenceName">ชื่อเอกสารหรือข้อความกำกับ</label>
+              <input id="f_evidenceName" type="text" class="form-control" placeholder="เช่น รายงานความก้าวหน้ารอบ 5 เดือนแรก" />
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="f_evidenceName">ชื่อไฟล์หลักฐาน / เอกสารอ้างอิง</label>
-            <input id="f_evidenceName" type="text" class="form-control" placeholder="เช่น รายงานผล_Q4.pdf" />
-          </div>
-          <div class="form-group">
-            <label for="f_evidenceUrl">ลิงก์เอกสารหลักฐาน (Google Drive / URL)</label>
-            <input id="f_evidenceUrl" type="text" class="form-control" placeholder="https://..." />
-          </div>
-
           <div class="form-group full-width">
-            <label for="f_note">หมายเหตุ / ความก้าวหน้าการดำเนินงาน</label>
-            <input id="f_note" type="text" class="form-control" placeholder="ระบุรายละเอียดเพิ่มเติม..." />
+            <label for="f_note">หมายเหตุการดำเนินงาน</label>
+            <input id="f_note" type="text" class="form-control" />
           </div>
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn" onclick="closeKpiModal()">ยกเลิก</button>
-          <button type="submit" class="btn btn-emerald">💾 บันทึกข้อมูลตัวชี้วัด</button>
+          <button type="submit" class="btn btn-primary">💾 บันทึกข้อมูล</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- =========================================================
-       MODAL 2: ตั้งค่าเชื่อมต่อ Google Sheet อัตโนมัติ (Apps Script)
-       ========================================================= -->
-  <div id="syncSettingsModal" class="modal-backdrop">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3 class="modal-title">⚙️ เชื่อมต่อระบบบันทึกข้อมูลลง Google Sheet อัตโนมัติ</h3>
-        <button class="btn btn-sm" onclick="closeSyncModal()">✕ ปิด</button>
-      </div>
-
-      <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
-        หน้าเว็บนี้ผูกการ<strong>อ่านข้อมูลสด</strong>จาก Google Sheet
-        <a href="https://docs.google.com/spreadsheets/d/1Lro8WK25uexe97cFHHedqC5iu2B65VyfiQ2AWUXyIUw/edit?usp=sharing" target="_blank" style="color: var(--accent-cyan);">1Lro8WK25uexe97cFHHedqC5iu2B65VyfiQ2AWUXyIUw</a>
-        ไว้เรียบร้อยแล้ว และเพื่อให้การกด <strong>เพิ่ม / แก้ไข / ลบ / อัปโหลดไฟล์</strong> เขียนกลับลง Google Sheet โดยตรง ให้ทำตาม 3 ขั้นตอนสั้นๆ ด้านล่างนี้ (ทำครั้งเดียว):
-      </p>
-
-      <ol style="font-size: 0.9rem; color: var(--text-primary); line-height: 1.75; padding-left: 1.25rem; margin-bottom: 1rem;">
-        <li>เปิดไฟล์ <a href="https://docs.google.com/spreadsheets/d/1Lro8WK25uexe97cFHHedqC5iu2B65VyfiQ2AWUXyIUw/edit?usp=sharing" target="_blank" style="color: var(--accent-cyan);">Google Sheet ของท่าน</a> แล้วไปที่เมนู <strong>ส่วนขยาย (Extensions) &gt; Apps Script</strong></li>
-        <li>กดปุ่ม <strong>"คัดลอกโค้ด Apps Script"</strong> ด้านล่างนี้ ไปวางทับในไฟล์ <code>Code.gs</code> แล้วกด <strong>การทำให้ใช้งานได้ (Deploy) &gt; การทำให้ใช้งานได้รายการใหม่ (New deployment)</strong> เลือกประเภทเป็น <strong>เว็บแอป (Web app)</strong> ตั้งค่าผู้มีสิทธิ์เข้าถึงเป็น <strong>ทุกคน (Anyone)</strong></li>
-        <li>คัดลอก <strong>Web App URL</strong> ที่ได้ มาวางในช่องด้านล่างนี้ แล้วกดบันทึก ระบบจะสร้างตารางและซิงค์ข้อมูลทั้งหมดลง Sheet ทันที!</li>
-      </ol>
-
-      <div class="form-group" style="margin-bottom: 1rem;">
-        <label for="gasUrlInput">Google Apps Script Web App URL (สำหรับเขียน/แก้ไข/อัปโหลดลง Sheet)</label>
-        <input id="gasUrlInput" type="url" class="form-control" placeholder="https://script.google.com/macros/s/AKfycb.../exec" />
-      </div>
-
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="font-size: 0.85rem; color: var(--text-muted);">โค้ดสำหรับวางใน Apps Script (อยู่ในไฟล์ <code>google-apps-script/Code.gs</code> ด้วย):</span>
-        <button type="button" class="btn btn-sm btn-primary" onclick="copyAppsScriptCode()">📋 คัดลอกโค้ด Apps Script</button>
-      </div>
-
-      <pre id="appsScriptCodeBlock" class="code-block-box">const SPREADSHEET_ID = '1Lro8WK25uexe97cFHHedqC5iu2B65VyfiQ2AWUXyIUw';
-const SHEET_NAME = 'KPI_2570';
-const HEADERS = ['id','code','name','dimension','unit','weight','target','actual','polarity','level1','level2','level3','level4','level5','owner','evidenceUrl','evidenceName','note','updatedAt'];
-
-function getOrCreateSheet() {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  let sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
-  if (sheet.getLastRow() === 0) {
-    sheet.setName(SHEET_NAME);
-    sheet.appendRow(HEADERS);
-  }
-  return sheet;
-}
-
-function readAllRows() {
-  const sheet = getOrCreateSheet();
-  const data = sheet.getDataRange().getValues();
-  if (data.length &lt;= 1) return [];
-  const headers = data[0].map(String);
-  return data.slice(1).filter(r =&gt; r[0] || r[1] || r[2]).map(row =&gt; {
-    const obj = {};
-    headers.forEach((h, i) =&gt; obj[h] = row[i]);
-    return obj;
-  });
-}
-
-function writeAllRows(items) {
-  const sheet = getOrCreateSheet();
-  sheet.clearContents();
-  const matrix = [HEADERS, ...items.map(item =&gt; HEADERS.map(h =&gt; item[h] ?? ''))];
-  sheet.getRange(1, 1, matrix.length, HEADERS.length).setValues(matrix);
-}
-
-function doGet() {
-  return ContentService.createTextOutput(JSON.stringify({ status: 'ok', data: readAllRows() })).setMimeType(ContentService.MimeType.JSON);
-}
-
-function doPost(e) {
-  const payload = JSON.parse(e.postData.contents);
-  let items = readAllRows();
-  if (payload.action === 'replaceAll') items = payload.items || [];
-  else if (payload.action === 'upsert') {
-    const idx = items.findIndex(x =&gt; String(x.id) === String(payload.item.id));
-    if (idx &gt;= 0) items[idx] = payload.item; else items.push(payload.item);
-  } else if (payload.action === 'delete') {
-    items = items.filter(x =&gt; String(x.id) !== String(payload.id));
-  } else if (payload.action === 'uploadFile') {
-    const folders = DriveApp.getFoldersByName('KPI_2570_Evidence_Files');
-    const folder = folders.hasNext() ? folders.next() : DriveApp.createFolder('KPI_2570_Evidence_Files');
-    const blob = Utilities.newBlob(Utilities.base64Decode(payload.base64Data), payload.mimeType, payload.fileName);
-    const file = folder.createFile(blob);
-    file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-    const idx = items.findIndex(x =&gt; String(x.id) === String(payload.kpiId));
-    if (idx &gt;= 0) { items[idx].evidenceUrl = file.getUrl(); items[idx].evidenceName = payload.fileName; }
-    writeAllRows(items);
-    return ContentService.createTextOutput(JSON.stringify({ status: 'ok', fileUrl: file.getUrl(), data: items })).setMimeType(ContentService.MimeType.JSON);
-  }
-  writeAllRows(items);
-  return ContentService.createTextOutput(JSON.stringify({ status: 'ok', data: items })).setMimeType(ContentService.MimeType.JSON);
-}</pre>
-
-      <div class="modal-footer">
-        <button type="button" class="btn" onclick="closeSyncModal()">ปิดหน้าต่าง</button>
-        <button type="button" class="btn btn-emerald" onclick="saveSyncSettings()">💾 บันทึกและซิงค์ข้อมูลลง Google Sheet</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast Notifications -->
   <div id="toastContainer" class="toast-container"></div>
-
   <script src="app.js"></script>
 </body>
 </html>

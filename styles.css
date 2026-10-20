@@ -1,28 +1,27 @@
 :root {
-  /* โทนสีเขียวธรรมชาติ สบายตา (Natural Sage & Forest Green - Default) */
-  --bg-primary: #eef6f1;
+  /* โทนสีน้ำเงินอ่อน สบายตา (Soft Calming Blue - ล็อคโหมดเดียว สบายตา ไม่สะท้อนโปรเจคเตอร์) */
+  --bg-primary: #f0f5fa;
   --bg-secondary: #ffffff;
-  --bg-card: rgba(255, 255, 255, 0.92);
+  --bg-card: rgba(255, 255, 255, 0.94);
   --bg-card-hover: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.88);
-  --border-glow: rgba(34, 139, 94, 0.32);
-  --border-subtle: rgba(24, 67, 46, 0.12);
+  --bg-glass: rgba(255, 255, 255, 0.92);
+  --border-glow: rgba(37, 99, 235, 0.28);
+  --border-subtle: rgba(30, 58, 95, 0.12);
 
-  --text-primary: #143325;
-  --text-secondary: #2d5441;
-  --text-muted: #5b7e6c;
+  --text-primary: #1e3a5f;
+  --text-secondary: #334e68;
+  --text-muted: #627d98;
 
-  --accent-cyan: #1b8a5a;
-  --accent-blue: #0d9488;
-  --accent-indigo: #2e7d32;
-  --accent-purple: #15803d;
-  --accent-emerald: #16a34a;
+  --accent-blue: #2563eb;
+  --accent-cyan: #0284c7;
+  --accent-sky: #38bdf8;
+  --accent-indigo: #4338ca;
+  --accent-emerald: #059669;
   --accent-amber: #d97706;
   --accent-rose: #dc2626;
 
-  --shadow-card: 0 10px 28px -6px rgba(20, 51, 37, 0.08), 0 2px 8px rgba(20, 51, 37, 0.04);
-  --shadow-glow-cyan: 0 6px 20px rgba(27, 138, 90, 0.2);
-  --shadow-glow-emerald: 0 6px 20px rgba(22, 163, 74, 0.22);
+  --shadow-card: 0 8px 24px -4px rgba(30, 58, 95, 0.08), 0 2px 6px rgba(30, 58, 95, 0.04);
+  --shadow-glow-blue: 0 4px 16px rgba(37, 99, 235, 0.2);
 
   --font-sans: 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Orbitron', 'Prompt', sans-serif;
@@ -31,34 +30,7 @@
   --projector-scale: 1;
 }
 
-/* โหมดเขียวเข้มธรรมชาติ (Deep Forest Mode สำหรับห้องประชุมปิดไฟ) */
-body.theme-light-projector {
-  --bg-primary: #0b1c14;
-  --bg-secondary: #12291f;
-  --bg-card: rgba(19, 43, 32, 0.88);
-  --bg-card-hover: rgba(25, 56, 42, 0.96);
-  --bg-glass: rgba(16, 36, 27, 0.85);
-  --border-glow: rgba(52, 211, 153, 0.35);
-  --border-subtle: rgba(167, 243, 208, 0.14);
-
-  --text-primary: #ecfdf5;
-  --text-secondary: #bbf7d0;
-  --text-muted: #86efac;
-
-  --accent-cyan: #34d399;
-  --accent-blue: #2dd4bf;
-  --accent-indigo: #4ade80;
-  --accent-purple: #a7f3d0;
-  --accent-emerald: #10b981;
-  --accent-amber: #fbbf24;
-  --accent-rose: #fb7185;
-
-  --shadow-card: 0 12px 32px -8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.08);
-  --shadow-glow-cyan: 0 0 22px rgba(52, 211, 153, 0.28);
-  --shadow-glow-emerald: 0 0 22px rgba(16, 185, 129, 0.28);
-}
-
-/* Projector Scale Mode */
+/* โหมดเต็มจอ / โปรเจคเตอร์ */
 body.projector-mode {
   --projector-scale: 1.12;
   font-size: 18px;
@@ -76,25 +48,18 @@ html, body {
   color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Natural Ambient Soft Background */
+/* แบ็คกราวด์นุ่มนวล สบายตา */
 .ambient-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 10% 12%, rgba(34, 197, 94, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 90% 18%, rgba(13, 148, 136, 0.10) 0%, transparent 45%),
-    radial-gradient(circle at 50% 88%, rgba(22, 163, 74, 0.08) 0%, transparent 55%);
-}
-
-body.theme-light-projector .ambient-bg {
-  background:
-    radial-gradient(circle at 12% 15%, rgba(16, 185, 129, 0.14) 0%, transparent 42%),
-    radial-gradient(circle at 88% 20%, rgba(13, 148, 136, 0.12) 0%, transparent 45%);
+    radial-gradient(circle at 10% 12%, rgba(56, 189, 248, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 90% 18%, rgba(37, 99, 235, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 50% 88%, rgba(2, 132, 199, 0.08) 0%, transparent 55%);
 }
 
 .cyber-grid {
@@ -103,13 +68,13 @@ body.theme-light-projector .ambient-bg {
   z-index: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(to right, rgba(27, 138, 90, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(27, 138, 90, 0.045) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(to right, rgba(37, 99, 235, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
 }
 
-/* App Container */
+/* App Wrapper */
 .app-wrapper {
   position: relative;
   z-index: 1;
@@ -118,7 +83,7 @@ body.theme-light-projector .ambient-bg {
   padding: 1.25rem 2rem 3rem;
 }
 
-/* Top Navigation Bar */
+/* แถบหัวเรื่องด้านบน */
 .top-navbar {
   display: flex;
   align-items: center;
@@ -141,19 +106,20 @@ body.theme-light-projector .ambient-bg {
 }
 
 .brand-orb {
-  width: 56px;
-  height: 56px;
+  width: 58px;
+  height: 58px;
   border-radius: 16px;
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 55%, #0d9488 100%);
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 55%, #1d4ed8 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.35rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.05rem;
   color: #ffffff;
-  box-shadow: var(--shadow-glow-emerald);
+  box-shadow: var(--shadow-glow-blue);
   position: relative;
+  letter-spacing: 0.5px;
 }
 
 .brand-orb::after {
@@ -161,22 +127,20 @@ body.theme-light-projector .ambient-bg {
   position: absolute;
   inset: -3px;
   border-radius: 18px;
-  border: 1.5px solid rgba(34, 197, 94, 0.45);
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
   animation: pulseRing 3.5s infinite ease-in-out;
 }
 
 @keyframes pulseRing {
-  0%, 100% { transform: scale(1); opacity: 0.65; }
-  50% { transform: scale(1.06); opacity: 0.18; }
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.2; }
 }
 
 .brand-titles h1 {
-  font-size: calc(1.45rem * var(--projector-scale));
+  font-size: calc(1.4rem * var(--projector-scale));
   font-weight: 700;
   letter-spacing: 0.2px;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #1e3a5f;
   line-height: 1.25;
 }
 
@@ -198,21 +162,9 @@ body.theme-light-projector .ambient-bg {
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 500;
-  background: rgba(22, 163, 74, 0.12);
-  color: var(--accent-emerald);
-  border: 1px solid rgba(22, 163, 74, 0.3);
-}
-
-.sync-badge.syncing {
-  background: rgba(13, 148, 136, 0.12);
+  background: rgba(37, 99, 235, 0.1);
   color: var(--accent-blue);
-  border-color: rgba(13, 148, 136, 0.3);
-}
-
-.sync-badge.local-only {
-  background: rgba(217, 119, 6, 0.12);
-  color: var(--accent-amber);
-  border-color: rgba(217, 119, 6, 0.3);
+  border: 1px solid rgba(37, 99, 235, 0.25);
 }
 
 .status-dot {
@@ -223,50 +175,47 @@ body.theme-light-projector .ambient-bg {
   box-shadow: 0 0 6px currentColor;
 }
 
-/* Main Page Switcher (Tabs) */
+/* แถบสลับหน้า (3 หน้า) */
 .nav-tabs {
   display: flex;
   align-items: center;
-  background: rgba(27, 138, 90, 0.08);
+  background: rgba(37, 99, 235, 0.08);
   padding: 0.35rem;
   border-radius: 14px;
   border: 1px solid var(--border-subtle);
-  gap: 0.4rem;
-}
-
-body.theme-light-projector .nav-tabs {
-  background: rgba(6, 20, 14, 0.55);
+  gap: 0.35rem;
+  flex-wrap: wrap;
 }
 
 .nav-tab-btn {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.7rem 1.35rem;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
   border-radius: 10px;
   border: none;
   background: transparent;
   color: var(--text-secondary);
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .nav-tab-btn:hover {
   color: var(--text-primary);
-  background: rgba(27, 138, 90, 0.08);
+  background: rgba(37, 99, 235, 0.08);
 }
 
 .nav-tab-btn.active {
-  background: linear-gradient(135deg, #16a34a 0%, #0d9488 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
   color: #ffffff;
   border: 1px solid transparent;
-  box-shadow: var(--shadow-glow-emerald);
+  box-shadow: var(--shadow-glow-blue);
 }
 
-/* Right Action Controls */
+/* ปุ่มควบคุมขวาบน */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -278,7 +227,7 @@ body.theme-light-projector .nav-tabs {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   padding: 0.65rem 1.15rem;
   border-radius: 12px;
   font-family: var(--font-sans);
@@ -294,34 +243,34 @@ body.theme-light-projector .nav-tabs {
 }
 
 .btn:hover {
-  border-color: var(--accent-cyan);
+  border-color: var(--accent-blue);
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(27, 138, 90, 0.14);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #16a34a 0%, #0d9488 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
   color: #ffffff;
   border: none;
-  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.32);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #22c55e 0%, #14b8a6 100%);
-  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.45);
+  background: linear-gradient(135deg, #1d4ed8 0%, #0369a1 100%);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
 }
 
 .btn-emerald {
-  background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
   color: #ffffff;
   border: none;
-  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
 }
 
 .btn-danger {
   background: rgba(220, 38, 38, 0.1);
   color: var(--accent-rose);
-  border-color: rgba(220, 38, 38, 0.28);
+  border-color: rgba(220, 38, 38, 0.25);
 }
 
 .btn-danger:hover {
@@ -330,7 +279,7 @@ body.theme-light-projector .nav-tabs {
 }
 
 .btn-sm {
-  padding: 0.42rem 0.8rem;
+  padding: 0.4rem 0.75rem;
   font-size: 0.84rem;
   border-radius: 9px;
 }
@@ -338,7 +287,7 @@ body.theme-light-projector .nav-tabs {
 /* Page Views */
 .page-view {
   display: none;
-  animation: fadeIn 0.35s ease;
+  animation: fadeIn 0.3s ease;
 }
 
 .page-view.active {
@@ -346,15 +295,13 @@ body.theme-light-projector .nav-tabs {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* ==========================================
-   PAGE 1: EXECUTIVE PROJECTOR DASHBOARD
+   หน้า 1: สำหรับผู้บริหาร
    ========================================== */
-
-/* Hero KPI Banner */
 .exec-hero-grid {
   display: grid;
   grid-template-columns: 1.35fr 1fr 1fr 1fr 1fr;
@@ -364,7 +311,7 @@ body.theme-light-projector .nav-tabs {
 
 @media (max-width: 1400px) {
   .exec-hero-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
 
@@ -372,24 +319,24 @@ body.theme-light-projector .nav-tabs {
   background: var(--bg-card);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 22px;
-  padding: 1.5rem;
+  border-radius: 20px;
+  padding: 1.4rem;
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .hero-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: var(--border-glow);
 }
 
 .hero-card.featured {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, var(--bg-card) 60%, rgba(13, 148, 136, 0.12) 100%);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, var(--bg-card) 60%, rgba(56, 189, 248, 0.08) 100%);
   border: 1.5px solid var(--border-glow);
 }
 
@@ -400,7 +347,7 @@ body.theme-light-projector .nav-tabs {
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--card-accent, var(--accent-cyan));
+  background: var(--card-accent, var(--accent-blue));
 }
 
 .hero-card-header {
@@ -408,25 +355,25 @@ body.theme-light-projector .nav-tabs {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
 }
 
 .hero-label {
-  font-size: calc(1rem * var(--projector-scale));
+  font-size: calc(0.98rem * var(--projector-scale));
   font-weight: 600;
   color: var(--text-secondary);
 }
 
 .hero-icon {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
-  background: rgba(22, 163, 74, 0.1);
-  color: var(--card-accent, var(--accent-cyan));
+  font-size: 1.3rem;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--card-accent, var(--accent-blue));
 }
 
 .hero-value-row {
@@ -438,7 +385,7 @@ body.theme-light-projector .nav-tabs {
 
 .hero-big-number {
   font-family: var(--font-display);
-  font-size: calc(3.1rem * var(--projector-scale));
+  font-size: calc(3rem * var(--projector-scale));
   font-weight: 800;
   line-height: 1;
   letter-spacing: -1px;
@@ -446,37 +393,37 @@ body.theme-light-projector .nav-tabs {
 }
 
 .hero-unit {
-  font-size: calc(1.2rem * var(--projector-scale));
+  font-size: calc(1.15rem * var(--projector-scale));
   font-weight: 600;
-  color: var(--card-accent, var(--accent-cyan));
+  color: var(--card-accent, var(--accent-blue));
 }
 
 .hero-subtext {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: calc(0.9rem * var(--projector-scale));
+  font-size: calc(0.88rem * var(--projector-scale));
   color: var(--text-muted);
 }
 
-/* Progress Bar inside cards */
+/* Progress bar */
 .cyber-progress-track {
   width: 100%;
-  height: 10px;
-  background: rgba(27, 138, 90, 0.12);
+  height: 9px;
+  background: rgba(37, 99, 235, 0.1);
   border-radius: 999px;
   overflow: hidden;
-  margin-top: 0.6rem;
+  margin-top: 0.5rem;
 }
 
 .cyber-progress-fill {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #22c55e, #15803d, #0d9488);
-  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  background: linear-gradient(90deg, #38bdf8, #2563eb, #1d4ed8);
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Analytics & Dimension Summary Row */
+/* Analytics Row */
 .exec-analytics-grid {
   display: grid;
   grid-template-columns: 1.1fr 1.4fr 1fr;
@@ -494,7 +441,7 @@ body.theme-light-projector .nav-tabs {
   background: var(--bg-card);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 22px;
+  border-radius: 20px;
   padding: 1.5rem;
   box-shadow: var(--shadow-card);
 }
@@ -503,7 +450,7 @@ body.theme-light-projector .nav-tabs {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.1rem;
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -511,8 +458,8 @@ body.theme-light-projector .nav-tabs {
 .panel-title {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  font-size: calc(1.2rem * var(--projector-scale));
+  gap: 0.6rem;
+  font-size: calc(1.15rem * var(--projector-scale));
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -521,13 +468,13 @@ body.theme-light-projector .nav-tabs {
   font-size: 0.8rem;
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
-  background: rgba(22, 163, 74, 0.12);
-  color: var(--accent-cyan);
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--accent-blue);
   border: 1px solid var(--border-glow);
   font-weight: 600;
 }
 
-/* Gauge Ring Visual */
+/* Radial Gauge */
 .gauge-container {
   display: flex;
   flex-direction: column;
@@ -538,8 +485,8 @@ body.theme-light-projector .nav-tabs {
 
 .radial-gauge {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 210px;
+  height: 210px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -553,7 +500,7 @@ body.theme-light-projector .nav-tabs {
 
 .radial-gauge-bg {
   fill: none;
-  stroke: rgba(27, 138, 90, 0.12);
+  stroke: rgba(37, 99, 235, 0.1);
   stroke-width: 14;
 }
 
@@ -564,8 +511,7 @@ body.theme-light-projector .nav-tabs {
   stroke-linecap: round;
   stroke-dasharray: 565.48;
   stroke-dashoffset: 565.48;
-  transition: stroke-dashoffset 1s cubic-bezier(0.22, 1, 0.36, 1);
-  filter: drop-shadow(0 2px 6px rgba(22, 163, 74, 0.3));
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .radial-center-text {
@@ -575,7 +521,7 @@ body.theme-light-projector .nav-tabs {
 
 .radial-percent {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.05;
@@ -597,7 +543,7 @@ body.theme-light-projector .nav-tabs {
 }
 
 .score-pill {
-  background: rgba(27, 138, 90, 0.06);
+  background: rgba(37, 99, 235, 0.06);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 0.55rem 1rem;
@@ -614,18 +560,18 @@ body.theme-light-projector .nav-tabs {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--accent-cyan);
+  color: var(--accent-blue);
 }
 
-/* Dimension Breakdown Bars */
+/* Dimension Breakdown */
 .dimension-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .dimension-item {
-  background: rgba(27, 138, 90, 0.04);
+  background: rgba(37, 99, 235, 0.04);
   border: 1px solid var(--border-subtle);
   border-radius: 14px;
   padding: 0.9rem 1.1rem;
@@ -659,73 +605,10 @@ body.theme-light-projector .nav-tabs {
   font-weight: 700;
 }
 
-/* Filter Bar for KPI Cards */
-.filter-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.category-pills {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.cat-pill {
-  padding: 0.5rem 1.05rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-card);
-  color: var(--text-secondary);
-  font-family: var(--font-sans);
-  font-size: 0.92rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.cat-pill:hover {
-  border-color: var(--accent-cyan);
-  color: var(--text-primary);
-}
-
-.cat-pill.active {
-  background: linear-gradient(135deg, #16a34a 0%, #0d9488 100%);
-  color: #ffffff;
-  border-color: transparent;
-  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 0.5rem 0.95rem;
-  min-width: 280px;
-}
-
-.search-box input {
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  width: 100%;
-}
-
-/* KPI Projector Cards Grid */
+/* KPI Cards Grid */
 .kpi-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(410px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
   gap: 1.25rem;
 }
 
@@ -747,13 +630,12 @@ body.theme-light-projector .nav-tabs {
   justify-content: space-between;
   position: relative;
   overflow: hidden;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .kpi-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   border-color: var(--border-glow);
-  background: var(--bg-card-hover);
 }
 
 .kpi-card-top {
@@ -777,16 +659,16 @@ body.theme-light-projector .nav-tabs {
   font-weight: 700;
   padding: 0.22rem 0.65rem;
   border-radius: 8px;
-  background: rgba(22, 163, 74, 0.12);
-  color: var(--accent-cyan);
-  border: 1px solid rgba(22, 163, 74, 0.28);
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--accent-blue);
+  border: 1px solid rgba(37, 99, 235, 0.25);
 }
 
 .kpi-dimension-tag {
   font-size: 0.8rem;
   padding: 0.2rem 0.65rem;
   border-radius: 8px;
-  background: rgba(27, 138, 90, 0.08);
+  background: rgba(30, 58, 95, 0.08);
   color: var(--text-secondary);
 }
 
@@ -799,56 +681,46 @@ body.theme-light-projector .nav-tabs {
 }
 
 .status-achieved {
-  background: rgba(22, 163, 74, 0.15);
-  color: #15803d;
-  border: 1px solid rgba(22, 163, 74, 0.35);
+  background: rgba(5, 150, 105, 0.12);
+  color: #059669;
+  border: 1px solid rgba(5, 150, 105, 0.3);
 }
 
 .status-ontrack {
-  background: rgba(13, 148, 136, 0.15);
-  color: #0f766e;
-  border: 1px solid rgba(13, 148, 136, 0.35);
+  background: rgba(37, 99, 235, 0.12);
+  color: #2563eb;
+  border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .status-warning {
-  background: rgba(245, 158, 11, 0.16);
-  color: #b45309;
-  border: 1px solid rgba(245, 158, 11, 0.38);
+  background: rgba(217, 119, 6, 0.12);
+  color: #d97706;
+  border: 1px solid rgba(217, 119, 6, 0.3);
 }
 
-.status-critical {
-  background: rgba(225, 29, 72, 0.15);
-  color: #be123c;
-  border: 1px solid rgba(225, 29, 72, 0.35);
+.status-waiting {
+  background: rgba(98, 125, 152, 0.12);
+  color: #627d98;
+  border: 1px solid rgba(98, 125, 152, 0.3);
 }
-
-body.theme-light-projector .status-achieved { color: #4ade80; }
-body.theme-light-projector .status-ontrack { color: #2dd4bf; }
-body.theme-light-projector .status-warning { color: #fbbf24; }
-body.theme-light-projector .status-critical { color: #fb7185; }
 
 .kpi-title {
-  font-size: calc(1.14rem * var(--projector-scale));
+  font-size: calc(1.15rem * var(--projector-scale));
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.4;
+  line-height: 1.45;
   margin-bottom: 1rem;
 }
 
-/* Big Numbers Row inside KPI Card */
 .kpi-metrics-box {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.65rem;
-  background: #f4faf6;
+  background: #f8fafc;
   border: 1px solid var(--border-subtle);
   border-radius: 14px;
   padding: 0.85rem;
   margin-bottom: 1rem;
-}
-
-body.theme-light-projector .kpi-metrics-box {
-  background: rgba(9, 22, 16, 0.55);
 }
 
 .metric-col {
@@ -872,12 +744,8 @@ body.theme-light-projector .kpi-metrics-box {
   color: var(--text-primary);
 }
 
-.metric-val.highlight-cyan {
+.metric-val.highlight-blue {
   color: var(--accent-blue);
-}
-
-.metric-val.highlight-emerald {
-  color: var(--accent-emerald);
 }
 
 .metric-unit-small {
@@ -887,7 +755,7 @@ body.theme-light-projector .kpi-metrics-box {
   font-weight: 400;
 }
 
-/* 5-Level OPDC Score Stepper */
+/* 5-Level Stepper */
 .level-stepper {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -897,9 +765,9 @@ body.theme-light-projector .kpi-metrics-box {
 
 .level-step {
   text-align: center;
-  padding: 0.3rem 0.2rem;
+  padding: 0.35rem 0.2rem;
   border-radius: 8px;
-  background: rgba(27, 138, 90, 0.06);
+  background: rgba(37, 99, 235, 0.05);
   border: 1px solid transparent;
   font-size: 0.75rem;
   color: var(--text-muted);
@@ -907,17 +775,17 @@ body.theme-light-projector .kpi-metrics-box {
 }
 
 .level-step.reached {
-  background: rgba(22, 163, 74, 0.14);
+  background: rgba(37, 99, 235, 0.12);
   color: var(--text-primary);
-  border-color: rgba(22, 163, 74, 0.28);
+  border-color: rgba(37, 99, 235, 0.25);
 }
 
 .level-step.current-level {
-  background: linear-gradient(135deg, #16a34a 0%, #0d9488 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
   color: #ffffff;
   border-color: transparent;
   font-weight: 700;
-  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.28);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
 }
 
 .kpi-card-footer {
@@ -932,30 +800,16 @@ body.theme-light-projector .kpi-metrics-box {
   flex-wrap: wrap;
 }
 
-.evidence-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  color: var(--accent-cyan);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.evidence-link:hover {
-  text-decoration: underline;
-}
-
 /* ==========================================
-   PAGE 2: STAFF DATA MANAGEMENT PORTAL
+   หน้า 2: สำหรับเจ้าหน้าที่ (ตารางจัดการ)
    ========================================== */
-
 .staff-header-banner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.4rem 1.75rem;
-  background: linear-gradient(135deg, rgba(22, 163, 74, 0.1) 0%, var(--bg-card) 100%);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, var(--bg-card) 100%);
   border: 1px solid var(--border-glow);
   border-radius: 20px;
   margin-bottom: 1.5rem;
@@ -963,9 +817,10 @@ body.theme-light-projector .kpi-metrics-box {
 }
 
 .staff-banner-info h2 {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
+  color: var(--text-primary);
 }
 
 .staff-banner-info p {
@@ -980,7 +835,6 @@ body.theme-light-projector .kpi-metrics-box {
   flex-wrap: wrap;
 }
 
-/* Data Table for Staff */
 .table-container {
   overflow-x: auto;
   border-radius: 16px;
@@ -995,10 +849,10 @@ body.theme-light-projector .kpi-metrics-box {
 }
 
 .cyber-table th {
-  background: rgba(22, 163, 74, 0.1);
+  background: rgba(37, 99, 235, 0.08);
   color: var(--text-primary);
   font-weight: 600;
-  padding: 1rem;
+  padding: 0.95rem 1rem;
   border-bottom: 1px solid var(--border-subtle);
   white-space: nowrap;
 }
@@ -1009,21 +863,17 @@ body.theme-light-projector .kpi-metrics-box {
   vertical-align: middle;
 }
 
-.cyber-table tbody tr {
-  transition: background-color 0.15s ease;
-}
-
 .cyber-table tbody tr:hover {
-  background: rgba(22, 163, 74, 0.05);
+  background: rgba(37, 99, 235, 0.04);
 }
 
 .quick-input {
-  width: 110px;
+  width: 100px;
   padding: 0.45rem 0.65rem;
   border-radius: 8px;
   border: 1.5px solid var(--border-glow);
-  background: var(--bg-secondary);
-  color: var(--accent-cyan);
+  background: #ffffff;
+  color: var(--accent-blue);
   font-family: var(--font-mono);
   font-size: 0.95rem;
   font-weight: 700;
@@ -1032,7 +882,7 @@ body.theme-light-projector .kpi-metrics-box {
 
 .quick-input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.22);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .row-actions {
@@ -1041,40 +891,94 @@ body.theme-light-projector .kpi-metrics-box {
   gap: 0.45rem;
 }
 
-/* Upload Dropzone */
-.upload-grid {
+/* สวิตช์เลือกประเภทไฟล์หลักฐาน */
+.evidence-type-toggle {
+  display: flex;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.evidence-toggle-btn {
+  flex: 1;
+  padding: 0.55rem;
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.evidence-toggle-btn.active {
+  background: var(--accent-blue);
+  color: #ffffff;
+}
+
+/* ==========================================
+   หน้า 3: สำหรับเจ้าหน้าที่บริหารยุทธศาสตร์ (Checklist)
+   ========================================== */
+.checklist-summary-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
-@media (max-width: 992px) {
-  .upload-grid {
-    grid-template-columns: 1fr;
-  }
+.checklist-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.dropzone-box {
-  border: 2px dashed var(--border-glow);
-  border-radius: 18px;
-  padding: 1.75rem;
-  text-align: center;
-  background: rgba(22, 163, 74, 0.04);
+.checklist-card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--accent-blue);
+}
+
+.checklist-card-info h4 {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.checklist-card-info .count-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-blue);
   cursor: pointer;
-  transition: all 0.25s ease;
 }
 
-.dropzone-box:hover,
-.dropzone-box.dragover {
-  background: rgba(22, 163, 74, 0.1);
-  border-color: var(--accent-cyan);
-  transform: translateY(-2px);
-}
-
-.dropzone-icon {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
+.date-input {
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
 }
 
 /* Modals */
@@ -1082,8 +986,8 @@ body.theme-light-projector .kpi-metrics-box {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(15, 35, 24, 0.6);
-  backdrop-filter: blur(8px);
+  background: rgba(15, 35, 60, 0.5);
+  backdrop-filter: blur(6px);
   display: none;
   align-items: center;
   justify-content: center;
@@ -1097,13 +1001,13 @@ body.theme-light-projector .kpi-metrics-box {
 .modal-card {
   background: var(--bg-secondary);
   border: 1px solid var(--border-glow);
-  border-radius: 22px;
+  border-radius: 20px;
   width: 100%;
   max-width: 820px;
   max-height: 90vh;
   overflow-y: auto;
   padding: 1.75rem;
-  box-shadow: 0 25px 60px rgba(15, 35, 24, 0.35);
+  box-shadow: 0 20px 50px rgba(15, 35, 60, 0.25);
 }
 
 .modal-header {
@@ -1116,8 +1020,9 @@ body.theme-light-projector .kpi-metrics-box {
 }
 
 .modal-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
+  color: var(--text-primary);
 }
 
 .form-grid {
@@ -1155,7 +1060,7 @@ body.theme-light-projector .kpi-metrics-box {
 }
 
 .form-control {
-  padding: 0.68rem 0.9rem;
+  padding: 0.65rem 0.85rem;
   border-radius: 10px;
   border: 1px solid var(--border-subtle);
   background: var(--bg-primary);
@@ -1166,8 +1071,8 @@ body.theme-light-projector .kpi-metrics-box {
 
 .form-control:focus {
   outline: none;
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18);
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
 }
 
 .modal-footer {
@@ -1179,7 +1084,7 @@ body.theme-light-projector .kpi-metrics-box {
   border-top: 1px solid var(--border-subtle);
 }
 
-/* Toast Notification */
+/* Toast */
 .toast-container {
   position: fixed;
   bottom: 1.5rem;
@@ -1192,14 +1097,14 @@ body.theme-light-projector .kpi-metrics-box {
 
 .toast {
   background: var(--bg-secondary);
-  border-left: 4px solid var(--accent-emerald);
+  border-left: 4px solid var(--accent-blue);
   border-top: 1px solid var(--border-subtle);
   border-right: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  padding: 0.9rem 1.25rem;
+  padding: 0.85rem 1.25rem;
   border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(15, 35, 24, 0.2);
+  box-shadow: 0 10px 24px rgba(30, 58, 95, 0.15);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -1213,14 +1118,14 @@ body.theme-light-projector .kpi-metrics-box {
 }
 
 .code-block-box {
-  background: #10241b;
-  color: #ecfdf5;
+  background: #0f233a;
+  color: #e2e8f0;
   font-family: var(--font-mono);
   font-size: 0.82rem;
   padding: 1rem;
   border-radius: 12px;
   border: 1px solid var(--border-subtle);
-  max-height: 260px;
+  max-height: 240px;
   overflow-y: auto;
   white-space: pre-wrap;
   margin: 0.75rem 0;
