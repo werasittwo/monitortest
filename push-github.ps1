@@ -19,23 +19,15 @@ if (-not $gitExe) {
 }
 
 Write-Host "=====================================================" -ForegroundColor Cyan
-Write-Host "  กำลังอัปโหลดขึ้น GitHub: werasittwo/monitortest" -ForegroundColor Green
-Write-Host "  หากมีหน้าต่าง Sign in to GitHub เด้งขึ้นมา" -ForegroundColor Yellow
-Write-Host "  ให้คลิกปุ่ม 'Sign in with your browser' ได้เลยครับ" -ForegroundColor Yellow
+Write-Host "  กำลังอัปโหลดการเปลี่ยนแปลงขึ้น GitHub: werasittwo/monitortest" -ForegroundColor Green
 Write-Host "=====================================================" -ForegroundColor Cyan
 
 Set-Location $PSScriptRoot
 
-& $gitExe init
-& $gitExe config user.name "werasittwo"
-& $gitExe config user.email "werasittwo@users.noreply.github.com"
-& $gitExe branch -M main
-& $gitExe remote remove origin 2>$null
-& $gitExe remote add origin https://github.com/werasittwo/monitortest.git
 & $gitExe add .
-& $gitExe commit -m "Update KPI 2570 Monitoring System" 2>$null
-& $gitExe push -u origin main
+& $gitExe commit -m "Update KPI 70: Soft blue theme, 2 KPIs, Strategy Checklist page" 2>$null
+& $gitExe push origin main
 
 Write-Host ""
-Write-Host "✅ อัปโหลดขึ้น https://github.com/werasittwo/monitortest เรียบร้อยแล้ว!" -ForegroundColor Green
+Write-Host "✅ อัปเดตขึ้น https://github.com/werasittwo/monitortest เรียบร้อยแล้ว!" -ForegroundColor Green
 Start-Process "https://github.com/werasittwo/monitortest"
