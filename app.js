@@ -1074,11 +1074,126 @@ function toggleProjectorMode() {
   showToast(isProj ? 'เปิดโหมดขึ้นโปรเจคเตอร์ (ขยายตัวอักษร + เต็มจอ)' : 'ออกจากโหมดโปรเจคเตอร์', 'cyan');
 }
 
+// ============================================================
+// Multi-Theme System (6 Professional Themes)
+// ============================================================
+const THEMES = {
+  'natural-sage': {
+    name: 'เขียวอ่อนธรรมชาติ (Sage Light)',
+    icon: '🌿',
+    bodyClass: ''
+  },
+  'forest-dark': {
+    name: 'เขียวเข้มธรรมชาติ (Forest Dark)',
+    icon: '🌲',
+    bodyClass: 'theme-forest-dark'
+  },
+  'midnight-navy': {
+    name: 'มิดไนท์เนวี (Midnight Navy)',
+    icon: '🌌',
+    bodyClass: 'theme-midnight-navy'
+  },
+  'oled-obsidian': {
+    name: 'ดำสนิทออบซิเดียน (OLED Pure)',
+    icon: '🖤',
+    bodyClass: 'theme-oled-obsidian'
+  },
+  'warm-sunset': {
+    name: 'ส้มอบอุ่นถนอมสายตา (Warm Sunset)',
+    icon: '🌅',
+    bodyClass: 'theme-warm-sunset'
+  },
+  'slate-corporate': {
+    name: 'สเลท คอร์ปอเรท (Slate Clean)',
+    icon: '🏢',
+    bodyClass: 'theme-slate-corporate'
+  }
+};
+
+const STORAGE_KEY_THEME = 'kpi_dashboard_theme_id';
+let currentThemeId = 'natural-sage';
+
+function toggleThemeMenu(event) {
+  if (event) event.stopPropagation();
+  const container = document.getElementById('themeDropdownContainer');
+  if (container) {
+    container.classList.toggle('open');
+  }
+}
+
+// Close dropdown when clicking outside
+window.addEventListener('click', (e) => {
+  const container = document.getElementById('themeDropdownContainer');
+  if (container && container.classList.contains('open')) {
+    if (!container.contains(e.target)) {
+      container.classList.remove('open');
+    }
+  }
+});
+
+function selectTheme(themeId, notify = true) {
+  if (!THEMES[themeId]) themeId = 'natural-sage';
+  currentThemeId = themeId;
+  const theme = THEMES[themeId];
+
+  // Remove existing theme classes
+  document.body.classList.remove(
+    'theme-light-projector',
+    'theme-forest-dark',
+    'theme-midnight-navy',
+    'theme-oled-obsidian',
+    'theme-warm-sunset',
+    'theme-slate-corporate'
+  );
+
+  // Apply new theme class
+  if (theme.bodyClass) {
+    document.body.classList.add(theme.bodyClass);
+  }
+
+  // Update button label and icon
+  const iconSpan = document.getElementById('themeBtnIcon');
+  const textSpan = document.getElementById('themeBtnText');
+  if (iconSpan) iconSpan.textContent = theme.icon;
+  if (textSpan) textSpan.textContent = theme.name.split(' (')[0];
+
+  // Update checkmarks in dropdown
+  document.querySelectorAll('.theme-menu-item').forEach(item => {
+    const isTarget = item.getAttribute('data-theme') === themeId;
+    item.classList.toggle('active', isTarget);
+    const checkSpan = item.querySelector('.theme-check');
+    if (checkSpan) checkSpan.textContent = isTarget ? '✓' : '';
+  });
+
+  // Save preference
+  try {
+    localStorage.setItem(STORAGE_KEY_THEME, themeId);
+  } catch (err) {}
+
+  // Close dropdown
+  const container = document.getElementById('themeDropdownContainer');
+  if (container) container.classList.remove('open');
+
+  if (notify) {
+    showToast(`เปลี่ยนธีมเป็น "${theme.name}" แล้ว`, 'emerald');
+  }
+}
+
+// Quick toggle: cycle through themes sequentially
 function toggleThemeMode() {
-  document.body.classList.toggle('theme-light-projector');
-  const isDarkForest = document.body.classList.contains('theme-light-projector');
-  const btn = document.getElementById('themeToggleBtn');
-  if (btn) btn.innerHTML = isDarkForest ? '🌿 โหมดเขียวอ่อนสบายตา (Natural Light)' : '🌲 โหมดเขียวเข้ม (Forest Dark)';
+  const keys = Object.keys(THEMES);
+  const currentIdx = keys.indexOf(currentThemeId);
+  const nextIdx = (currentIdx + 1) % keys.length;
+  selectTheme(keys[nextIdx], true);
+}
+
+function loadSavedTheme() {
+  const saved = localStorage.getItem(STORAGE_KEY_THEME);
+  if (saved && THEMES[saved]) {
+    selectTheme(saved, false);
+  } else {
+    selectTheme('natural-sage', false);
+  }
 }
 
 function toggleAutoPresentation() {
@@ -1235,5 +1350,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  loadSavedTheme();
   initializeData();
 });
