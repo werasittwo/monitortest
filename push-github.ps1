@@ -1,8 +1,7 @@
 $possiblePaths = @(
-  "C:\Program Files\Git\cmd\git.exe",
-  "C:\Program Files (x86)\Git\cmd\git.exe",
   "$env:LOCALAPPDATA\Programs\Git\cmd\git.exe",
-  "$env:USERPROFILE\AppData\Local\Programs\Git\cmd\git.exe"
+  "C:\Program Files\Git\cmd\git.exe",
+  "C:\Program Files (x86)\Git\cmd\git.exe"
 )
 
 $gitExe = $null
@@ -19,12 +18,13 @@ if (-not $gitExe) {
   if ($cmd) { $gitExe = $cmd.Source }
 }
 
-if (-not $gitExe) {
-  Write-Error "Git executable not found."
-  exit 1
-}
+Write-Host "=====================================================" -ForegroundColor Cyan
+Write-Host "  กำลังอัปโหลดขึ้น GitHub: werasittwo/monitortest" -ForegroundColor Green
+Write-Host "  หากมีหน้าต่าง Sign in to GitHub เด้งขึ้นมา" -ForegroundColor Yellow
+Write-Host "  ให้คลิกปุ่ม 'Sign in with your browser' ได้เลยครับ" -ForegroundColor Yellow
+Write-Host "=====================================================" -ForegroundColor Cyan
 
-Write-Host "Using Git at: $gitExe" -ForegroundColor Cyan
+Set-Location $PSScriptRoot
 
 & $gitExe init
 & $gitExe config user.name "werasittwo"
@@ -33,5 +33,9 @@ Write-Host "Using Git at: $gitExe" -ForegroundColor Cyan
 & $gitExe remote remove origin 2>$null
 & $gitExe remote add origin https://github.com/werasittwo/monitortest.git
 & $gitExe add .
-& $gitExe commit -m "Initial commit: KPI 2570 Monitoring System"
+& $gitExe commit -m "Update KPI 2570 Monitoring System" 2>$null
 & $gitExe push -u origin main
+
+Write-Host ""
+Write-Host "✅ อัปโหลดขึ้น https://github.com/werasittwo/monitortest เรียบร้อยแล้ว!" -ForegroundColor Green
+Start-Process "https://github.com/werasittwo/monitortest"
