@@ -50,9 +50,47 @@
         <button id="autoSlideBtn" class="btn" onclick="toggleAutoPresentation()" title="สลับมิติตัวชี้วัดอัตโนมัติขณะนำเสนอ">
           ▶️ นำเสนออัตโนมัติ
         </button>
-        <button id="themeToggleBtn" class="btn" onclick="toggleThemeMode()" title="สลับโหมดสีเขียวอ่อนสบายตา หรือ เขียวเข้มป่าธรรมชาติ">
-          🌲 โหมดเขียวเข้ม (Forest Dark)
-        </button>
+        <!-- Multi-Theme Dropdown Selector -->
+        <div class="theme-dropdown-container" id="themeDropdownContainer">
+          <button id="themeToggleBtn" class="btn theme-selector-btn" onclick="toggleThemeMenu(event)" title="เลือกธีมสีการแสดงผล">
+            <span id="themeBtnIcon">🌿</span>
+            <span id="themeBtnText">เขียวอ่อนธรรมชาติ</span>
+            <span class="theme-chevron">▾</span>
+          </button>
+          <div id="themeMenu" class="theme-dropdown-menu">
+            <div class="theme-menu-header">🎨 เลือกธีมสีการแสดงผล</div>
+            <button type="button" class="theme-menu-item active" data-theme="natural-sage" onclick="selectTheme('natural-sage')">
+              <span class="theme-dot" style="background: linear-gradient(135deg, #eef6f1 50%, #16a34a 50%);"></span>
+              <span class="theme-name">🌿 เขียวอ่อนธรรมชาติ (Sage Light)</span>
+              <span class="theme-check">✓</span>
+            </button>
+            <button type="button" class="theme-menu-item" data-theme="forest-dark" onclick="selectTheme('forest-dark')">
+              <span class="theme-dot" style="background: linear-gradient(135deg, #0b1c14 50%, #10b981 50%);"></span>
+              <span class="theme-name">🌲 เขียวเข้มธรรมชาติ (Forest Dark)</span>
+              <span class="theme-check"></span>
+            </button>
+            <button type="button" class="theme-menu-item" data-theme="midnight-navy" onclick="selectTheme('midnight-navy')">
+              <span class="theme-dot" style="background: linear-gradient(135deg, #0a1120 50%, #38bdf8 50%);"></span>
+              <span class="theme-name">🌌 มิดไนท์เนวี (Midnight Navy)</span>
+              <span class="theme-check"></span>
+            </button>
+            <button type="button" class="theme-menu-item" data-theme="oled-obsidian" onclick="selectTheme('oled-obsidian')">
+              <span class="theme-dot" style="background: linear-gradient(135deg, #000000 50%, #00f2fe 50%);"></span>
+              <span class="theme-name">🖤 ดำสนิทออบซิเดียน (OLED Pure)</span>
+              <span class="theme-check"></span>
+            </button>
+            <button type="button" class="theme-menu-item" data-theme="warm-sunset" onclick="selectTheme('warm-sunset')">
+              <span class="theme-dot" style="background: linear-gradient(135deg, #fbf5ed 50%, #d97706 50%);"></span>
+              <span class="theme-name">🌅 ส้มอบอุ่นถนอมสายตา (Warm Sunset)</span>
+              <span class="theme-check"></span>
+            </button>
+            <button type="button" class="theme-menu-item" data-theme="slate-corporate" onclick="selectTheme('slate-corporate')">
+              <span class="theme-dot" style="background: linear-gradient(135deg, #f1f5f9 50%, #2563eb 50%);"></span>
+              <span class="theme-name">🏢 สเลท คอร์ปอเรท (Slate Clean)</span>
+              <span class="theme-check"></span>
+            </button>
+          </div>
+        </div>
         <button class="btn btn-primary" onclick="toggleProjectorMode()" title="ขยายตัวอักษรและเปิดเต็มจอสำหรับโปรเจคเตอร์">
           📽️ โหมดขึ้นโปรเจคเตอร์
         </button>
